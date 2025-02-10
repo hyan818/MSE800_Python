@@ -16,37 +16,17 @@ def main():
     with open(filename, "r", encoding="utf-8") as file:
         lines = file.readlines()
 
-    count_for_statements(filename, lines)
-    count_while_statements(filename, lines)
-    count_if_statements(filename, lines)
+    count_statements(filename, lines, "for")
+    count_statements(filename, lines, "while")
+    count_statements(filename, lines, "if")
 
 
-def count_for_statements(filename, lines):
-    """Count how many for statements in the file."""
+def count_statements(filename, lines, statement):
+    """Count how many statements in the file."""
     num_for_loops = 0
 
     for line in lines:
-        if line.strip().startswith("for"):
+        if line.strip().startswith(statement):
             num_for_loops += 1
 
-    print(f"Program {filename} contain {num_for_loops} for loops")
-
-
-def count_while_statements(filename, lines):
-    """Count how many while statements in the file."""
-    num_while_loops = 0
-    for line in lines:
-        if line.strip().startswith("while"):
-            num_while_loops += 1
-
-    print(f"Program {filename} contain {num_while_loops} for loops")
-
-
-def count_if_statements(filename, lines):
-    """Count how many if statements in the file."""
-    num_if_loops = 0
-    for line in lines:
-        if line.strip().startswith("if"):
-            num_if_loops += 1
-
-    print(f"Program {filename} contain {num_if_loops} for loops")
+    print(f"Program {filename} contain {num_for_loops} {statement} loops")
