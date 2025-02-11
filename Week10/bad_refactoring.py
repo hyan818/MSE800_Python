@@ -23,10 +23,5 @@ def main():
 
 def count_statements(filename, lines, statement):
     """Count how many statements in the file."""
-    num_for_loops = 0
-
-    for line in lines:
-        if line.strip().startswith(statement):
-            num_for_loops += 1
-
+    num_for_loops = sum(bool(line.strip().startswith(statement)) for line in lines)
     print(f"Program {filename} contain {num_for_loops} {statement} loops")
