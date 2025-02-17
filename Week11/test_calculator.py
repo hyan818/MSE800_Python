@@ -1,6 +1,6 @@
 import pytest
 
-from Week11.calculator import add, divide, multiply, subtract
+from Week11.calculator import add, divide, multiply, power, prime, subtract
 
 
 def test_add():
@@ -22,3 +22,17 @@ def test_divide():
 def test_divide_by_zero():
     with pytest.raises(ValueError, match="Cannot divide by zero"):
         divide(10, 0)
+
+
+def test_prime():
+    assert prime(-1) is False
+    assert prime(1) is False
+    assert prime(2) is True
+    assert prime(10) is False
+
+
+def test_power():
+    assert power(1, 0) == 1
+    assert power(2, 2) == 4
+    assert power(2, -2) == 1 / 4
+    assert power(2, 3) == 8
